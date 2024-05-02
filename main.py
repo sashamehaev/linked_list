@@ -18,21 +18,17 @@ def solution(head_node, idx):
     # Напишите код функции здесь.
     # ヽ(´▽`)/
     index = 0
-    temp_node = head_node
-    while temp_node is not None:
+    current_node = head_node
+    while current_node is not None:
         if idx == 0:
             return head_node.next_item
-        if index == idx:
-            if temp_node.next_item is None:
-                head_node.next_item.next_item.next_item = None
+        if idx == index + 1:
+            if current_node.next_item.next_item is None:
+                current_node.next_item = None
                 return head_node
-            if temp_node.next_item.next_item is None:
-                head_node.next_item.next_item = temp_node.next_item
-                return head_node
-            if temp_node.next_item.next_item.next_item is None:
-                head_node.next_item = temp_node.next_item
-                return head_node
-        temp_node = temp_node.next_item
+            current_node.next_item = current_node.next_item.next_item
+            return head_node
+        current_node = current_node.next_item
         index += 1
     # return head_node
 
